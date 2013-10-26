@@ -1,0 +1,25 @@
+<div class="navbar-inner" data-ng-controller="HeaderController" id="navBar">
+  <!--data-ng-init="init()"-->
+  <ul class="nav">
+    <li><a class="brand" href="/">Mario Kart Manager</a></li>
+  </ul>
+
+  <!-- Will be shown when the user is not authenticated -->
+  <ul class="nav pull-right" data-ng-hide="isAuth" id="unlogged-menu">
+    <li><a href="/signup" id="signup-btn">Signup</a></li>
+    <li class="divider-vertical"></li>
+    <li><a href="/signin" id="signin-btn">Signin</a></li>
+  </ul>
+
+  <!-- Will be shown when the user is authenticated -->
+  <ul class="nav pull-right" data-ng-show="isAuth" id="logged-menu">
+    <li class="dropdown">
+      <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+        {{user.name}} <b class="caret"></b>
+      </a>
+      <ul class="dropdown-menu">
+        <li><a href="/signout" id="signout-btn">Signout</a></li>
+      </ul>
+    </li>
+  </ul>
+</div>
