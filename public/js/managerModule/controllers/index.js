@@ -4,16 +4,14 @@
 define(['require', 'angular'
 	, './HeaderController'
 	, './IndexController'
-], function(require, angular, HeaderController, IndexController) {
+	, './RosterController'
+], function(require, angular, HeaderController, IndexController, RosterController) {
 	"use strict";
 	console.log('Loading Controllers...');
 
 	return angular.module('mk.managerModule.controllers', ['mk.managerModule.services'])
 		.controller('HeaderController', ['$scope', '$location', 'User', HeaderController])
-		.controller('IndexController', ['$scope', '$socket', '$t', IndexController]);
+		.controller('IndexController', ['$scope', '$socket', '$t', IndexController])
+		.controller('RosterController', ['$scope', RosterController])
 
-	// Then laod each controller individually
-	//	require(['./headerCtrl'], function(HeaderCtrl) {
-	//		ManagerControllersModule.controller('HeaderCtrl', ['$scope', '$location', 'User', HeaderCtrl]);
-	//	});
-})
+});

@@ -21,6 +21,7 @@ require.config({
 		'ngResource': '../lib/angular-resource/angular-resource',
 		'uiBootstrap': '../lib/angular-bootstrap/ui-bootstrap',
 		'angularMocks': '../lib/angular-mocks/angular-mocks',
+		'lodash':'../lib/lodash/dist/lodash',
 		// Unit tests folder
 		'unit': '../test/spec',
 		// Functional tests folder
@@ -30,7 +31,7 @@ require.config({
 	// AMD-readyisation
 	shim: {
 		'angular': {
-			deps: ['jquery'],
+			deps: ['jquery', 'lodash'],
 			exports: 'angular'
 		},
 		'ngCookies': ['angular'],
