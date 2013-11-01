@@ -1,9 +1,8 @@
-define(['angular'], function(angular) {
+define([], function() {
 	"use strict";
 
-	console.log('Loading HeaderCtrl...');
-
-	return function HeaderCtrl($scope, $location, User) {
+	return function HeaderCtrl($scope, $location, $logger, User) {
+		$logger.debug('Loading HeaderCtrl...');
 		$scope.user = User.getUser();
 		$scope.isAuth = User.isAuthenticated();
 	};

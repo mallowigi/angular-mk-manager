@@ -8,7 +8,7 @@
 /**
  * Module dependencies.
  */
-
+'use strict';
 var express = require('express')
 	, fs = require('fs')
 	, passport = require('passport')
@@ -27,7 +27,7 @@ var env = process.env.NODE_ENV || 'development'
 	, mongoose = require('mongoose');
 
 // Bootstrap db connection
-var db = mongoose.connect(config.db, function(err) {
+mongoose.connect(config.db, function(err) {
 	if (err) {
 		throw err;
 	}
@@ -35,9 +35,9 @@ var db = mongoose.connect(config.db, function(err) {
 });
 
 // Bootstrap models
-var models_path = __dirname + '/app/models';
-fs.readdirSync(models_path).forEach(function(file) {
-	require(models_path + '/' + file);
+var modelsPath = __dirname + '/app/models';
+fs.readdirSync(modelsPath).forEach(function(file) {
+	require(modelsPath + '/' + file);
 });
 
 // bootstrap passport config
@@ -49,7 +49,7 @@ var app = express();
 require('./config/express')(app, config, passport);
 
 // Bootstrap routes
-require('./config/routes')(app, passport, auth);
+require('./app/routes/routes')(app, passport, auth);
 
 
 //i18next setings
@@ -68,4 +68,4 @@ require('./config/socket.io')(server, config);
 logger.init(app, passport, mongoose);
 
 // expose app
-exports = module.exports = app;
+module.exports = app;

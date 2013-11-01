@@ -6,10 +6,10 @@ var express = require('express')
 	, mongoStore = require('connect-mongo')(express)
 	, flash = require('connect-flash')
 	, helpers = require('view-helpers')
-	, i18n = require('i18next')
+	, i18n = require('i18next');
 
 module.exports = function(app, config, passport) {
-
+	'use strict';
 	app.set('showStackError', true);
 
 	// should be placed before express.static
@@ -24,7 +24,7 @@ module.exports = function(app, config, passport) {
 	 */
 	app.use(express.compress({
 		filter: function(req, res) {
-			return /json|text|javascript|css/.test(res.getHeader('Content-Type'));
+			return (/json|text|javascript|css/).test(res.getHeader('Content-Type'));
 		},
 		level: 9
 	}));
@@ -39,21 +39,21 @@ module.exports = function(app, config, passport) {
 	/**
 	 * Serves the /public directory at the server address
 	 */
-	app.use(express.static(config.root + '/public'))
+	app.use(express.static(config.root + '/public'));
 
 
 
 	// don't use logger for test env
 	if (process.env.NODE_ENV !== 'test') {
-		app.use(express.logger('dev'))
+		app.use(express.logger('dev'));
 	}
 
 	// set views path, template engine and default layout
-	app.set('views', config.root + '/app/views')
-	app.set('view engine', 'jade')
+	app.set('views', config.root + '/app/views');
+	app.set('view engine', 'jade');
 
 	// enable jsonp
-	app.enable("jsonp callback")
+	app.enable("jsonp callback");
 
 	/**
 	 * Populate res.cookies from the cookie headers
@@ -108,7 +108,7 @@ module.exports = function(app, config, passport) {
 	 *
 	 * Plus, checks if the user is on a mobile Useragent and renders the mobile view if there is one.
 	 */
-	app.use(helpers(config.app.name))
+	app.use(helpers(config.app.name));
 
 	/**
 	 * Initializes the session to be used with the passport strategy.
@@ -137,7 +137,8 @@ module.exports = function(app, config, passport) {
 	app.use(i18n.handle);
 
 	/**
-	 * Express router. Listens to route changes in the url, does all the routing functions (pattern matching, redirects, parameters and dispatch)
+	 * Express router. Listens to route changes in the url, does all the routing functions (pattern matching, redirects,
+	 * parameters and dispatch).
 	 * This is mandatory in order to use express routes (app.get, app.post...)
 	 */
 	app.use(app.router);
@@ -148,19 +149,19 @@ module.exports = function(app, config, passport) {
 	app.use(function(err, req, res, next) {
 		// treat as 404
 		if (~err.message.indexOf('not found')) {
-			return next()
+			return next();
 		}
 
 		// log it
-		console.error(err.stack)
+		console.error(err.stack);
 
 		// error page
-		res.status(500).render('500', { error: err.stack })
+		res.status(500).render('500', { error: err.stack });
 	});
 
 	// assume 404 since no middleware responded
-	app.use(function(req, res, next) {
-		res.status(404).render('404', { url: req.originalUrl, error: 'Not found' })
+	app.use(function(req, res) {
+		res.status(404).render('404', { url: req.originalUrl, error: 'Not found' });
 	});
 
-}
+};

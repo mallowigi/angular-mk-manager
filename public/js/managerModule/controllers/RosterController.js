@@ -1,11 +1,16 @@
 /**
  * Created by Elior on 31/10/13.
  */
-define(['angular'], function(angular) {
+define([], function() {
 	"use strict";
-	return function RosterController($scope, $routeParams, Roster, User) {
+	return function RosterController($scope, $routeParams, $logger, Roster, User) {
+		var selected;
+		$logger.debug('Loading Roster Controller...');
+
 		$scope.user = User;
 		$scope.characters = Roster;
-		$scope.selected = $scope.characters['Mario'];
-	}
-})
+
+		selected = $routeParams.selected || 'Mario';
+		$scope.selected = $scope.characters[selected];
+	};
+});

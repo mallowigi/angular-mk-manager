@@ -1,19 +1,50 @@
-define(['angular', 'i18n', 'app'], function(angular, i18n, MarioKartManagerApp) {
+define(['angular', 'i18n', 'log', 'app'], function(angular, i18n, log, MarioKartManagerApp) {
 	"use strict";
 
-	// Lazy loading since Angular is eager-loading by default
-	//	MarioKartManagerApp.config(function($controllerProvider, $compileProvider, $filterProvider, $factoryProvider, $provide, $animationProvider) {
-	//		MarioKartManagerApp.lazy = {
-	//			controller: $controllerProvider.register,
-	//			directive: $compileProvider.directive,
-	//			filter: $filterProvider.register,
-	//			factory: $provide.factory,
-	//			service: $provide.service,
-	//			animation: $animationProvider.register
-	//		};
-	//	})
+	/**
+	 * Registers the loglevel logger inside angular
+	 */
+	MarioKartManagerApp.provider('$logger', function() {
+		this.enableAll = function() {
+			log.enableAll();
+		};
 
-	//Setting up route
+		this.disableAll = function() {
+			log.disableAll();
+		};
+
+		this.setLevel = function(level) {
+			log.setLevel(level);
+		};
+
+		this.$get = function() {
+			return {
+				trace: log.trace,
+				error: log.error,
+				info: log.info,
+				log: log.debug,
+				debug: log.debug,
+				warn: log.warn,
+				critical: function(message) {
+					log.error("!!!Critical error!!!");
+					log.error(message);
+				},
+				errorWarn: function(error, warn){
+					log.error(error);
+					log.warn(warn);
+				}
+			};
+		};
+	});
+
+	/*
+	 Configures the angular log level here
+	 */
+	MarioKartManagerApp.config(['$loggerProvider', function($loggerProvider) {
+		$loggerProvider.setLevel('info');
+	}]);
+
+	//Setting up routes
 	MarioKartManagerApp.config(['$routeProvider', function($routeProvider) {
 		$routeProvider.
 			when('/articles', { templateUrl: 'views/articles/list.html' }).
@@ -40,8 +71,8 @@ define(['angular', 'i18n', 'app'], function(angular, i18n, MarioKartManagerApp) 
 	}]);
 
 	//Removing tomcat unspported headers
-	MarioKartManagerApp.config(['$httpProvider', function($httpProvider, Configuration) {
-		//delete $httpProvider.defaults.headers.common["X-Requested-With"];
+	MarioKartManagerApp.config(['$httpProvider', function($httpProvider) {
+		delete $httpProvider.defaults.headers.common["X-Requested-With"];
 	}]);
 
 	//Setting HTML5 Location Mode

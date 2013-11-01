@@ -10,7 +10,7 @@ var path = require('path')
       postmarkKey: 'POSTMARK_KEY',
       parseAppId: 'PARSE_APP_ID',
       parseApiKey: 'PARSE_MASTER_KEY'
-    }
+    };
 
 module.exports = {
   development: {
@@ -148,4 +148,4 @@ module.exports = {
       ns: "/api"
     }
   }
-}
+};

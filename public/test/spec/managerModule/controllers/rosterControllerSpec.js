@@ -8,7 +8,8 @@ define(['require'
 	, 'mocks/UserMock'
 ], function(require, RosterController) {
 	"use strict";
-	var $rootScope, $controller, rosterCtrlScope, rosterCtrl;
+	var $rootScope, $controller, rosterCtrlScope, rosterCtrl,
+		$routeParams;
 
 	describe('RosterController Tests: ', function() {
 
@@ -63,10 +64,12 @@ define(['require'
 			beforeEach(inject(['$rootScope', '$controller', function(_$rootScope_, _$controller_) {
 				$rootScope = _$rootScope_;
 				$controller = _$controller_;
+				$routeParams = {selected: 'Luigi'};
 
 				rosterCtrlScope = $rootScope.$new();
 				rosterCtrl = $controller('RosterController', {
-					$scope: rosterCtrlScope
+					$scope: rosterCtrlScope,
+					$routeParams: $routeParams
 				});
 			}]));
 
@@ -88,8 +91,13 @@ define(['require'
 			});
 
 			it('should have a character of name "Wario"', function() {
-				expect(rosterCtrlScope.characters['Wario']).toBeDefined();
+				expect(rosterCtrlScope.characters.Wario).toBeDefined();
 			});
+
+			it('should have the selected character according to routeParams', function() {
+				expect(rosterCtrlScope.selected.name).toBe('Luigi');
+			});
+
 
 		});
 

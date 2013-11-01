@@ -3,7 +3,6 @@
  */
 define([], function() {
 	"use strict";
-	console.log("Initializing Roster factory...")
 
 	var Character = function(name, options) {
 		options = options || {};
@@ -11,9 +10,11 @@ define([], function() {
 		this.speed = options.speed || 'average';
 		this.accel = options.accel || 'average';
 		this.weight = options.weight || 'medium';
-	}
+	};
 
-	return function Roster() {
+	return function Roster($logger) {
+		$logger.debug('Creating a Roster');
+
 		var roster = {
 			'Mario': new Character('Mario'),
 			'Luigi': new Character('Luigi'),
@@ -27,6 +28,6 @@ define([], function() {
 			'Yoshi': new Character('Yoshi', {'speed': 'fast', 'accel': 'average', 'weight': 'light'})
 		};
 		return roster;
-	}
+	};
 
-})
+});

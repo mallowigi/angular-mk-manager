@@ -5,6 +5,7 @@
 var i18n = require('i18next');
 
 module.exports = function(app, config) {
+	'use strict';
 	//Localization Config
 	i18n.init({
 		ns: config.i18n.ns,
@@ -26,9 +27,9 @@ module.exports = function(app, config) {
 		.serveDynamicResources(app)
 		.serveMissingKeyRoute(app)
 		.serveChangeKeyRoute(app)
-		.serveRemoveKeyRoute(app)
+		.serveRemoveKeyRoute(app);
 
 	//Helper
 	app.locals.t = i18n.t;
 
-}
+};

@@ -1,3 +1,4 @@
+/* global io */
 define(['angular'], function(angular) {
 	"use strict";
 	// io should be loaded as part of node_modules?
@@ -21,7 +22,7 @@ define(['angular'], function(angular) {
 								callback.apply(socket, args);
 							}
 						});
-					})
+					});
 				}
 			};
 		});

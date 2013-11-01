@@ -1,9 +1,9 @@
-define(['angular'], function(angular) {
+define([], function() {
 	"use strict";
-	console.log('Loading Manager User Service');
-	return function UserService($window) {
-		"use strict";
-		console.log('Loading User Service...');
+
+	return function UserService($window, $logger) {
+		$logger.debug('Creating a new User');
+
 		return {
 			/**
 			 * Gets the current username, or null if the user is not connected

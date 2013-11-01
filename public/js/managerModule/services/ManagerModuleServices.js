@@ -2,14 +2,15 @@
  * Created by Elior on 25/10/13.
  */
 define(['require', 'angular'
+	, 'log'
 	, './User'
-	, './Roster' ], function(require, angular, UserService, RosterService) {
+	, './Roster' ], function(require, angular, log, UserService, RosterService) {
 	"use strict";
-	console.log('Loading Manager services...');
+	log.debug('Loading Manager services...');
 
 	// Load the angular module
 	return angular.module('mk.managerModule.services', [])
-		.factory('User', ['$window', UserService])
-		.service('Roster', [RosterService])
+		.factory('User', ['$window', '$logger', UserService])
+		.service('Roster', ['$logger', RosterService]);
 
-})
+});

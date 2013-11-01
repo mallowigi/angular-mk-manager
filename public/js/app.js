@@ -1,11 +1,12 @@
-define(['angular', 'ngCookies', 'ngResource', 'uiBootstrap'
+define(['angular', 'log'
+	, 'ngCookies', 'ngResource', 'uiBootstrap'
 	, 'services/socket.io'
 	, 'services/i18next'
 	, 'managerModule/managerModule'
 
-], function(angular) {
+], function(angular, log) {
 	"use strict";
-	console.log('Initializing App...');
+	log.debug('Initializing App...');
 
 	var MarioKartApp = angular.module('mk', [
 		'ngCookies',
@@ -17,5 +18,5 @@ define(['angular', 'ngCookies', 'ngResource', 'uiBootstrap'
 	]);
 
 	return MarioKartApp;
-})
+});
 

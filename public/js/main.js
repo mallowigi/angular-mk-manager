@@ -3,7 +3,7 @@
  */
 require.config({
 
-	baseUrl:'js',
+	baseUrl: 'js',
 
 	paths: {
 		'domReady': '../lib/requirejs-domready/domReady',
@@ -13,12 +13,20 @@ require.config({
 		'ngCookies': '../lib/angular-cookies/angular-cookies',
 		'ngResource': '../lib/angular-resource/angular-resource',
 		'uiBootstrap': '../lib/angular-bootstrap/ui-bootstrap',
+		'lodash': '../lib/lodash/dist/lodash',
+		'log': '../lib/loglevel/lib/loglevel'
 	},
 
 	// AMD-readyisation
 	shim: {
+		'lodash': {
+			exports: '_'
+		},
+		'jquery': {
+			exports: '$'
+		},
 		'angular': {
-			deps: ['jquery'],
+			deps: ['jquery', 'log'],
 			exports: 'angular'
 		},
 		'ngCookies': ['angular'],
@@ -26,11 +34,14 @@ require.config({
 		'uiBootstrap': ['angular']
 	},
 	// Prioritization
-	priority: ['angular']
+	priority: ['angular'],
+
+	deps: ['init'],
 
 });
 
-require(['app','init'], function(){
+// config non-angular logger
+require(['log'], function(log) {
 	"use strict";
-	console.log("Loading bootstrap...");
-})
+	log.setLevel('trace');
+});

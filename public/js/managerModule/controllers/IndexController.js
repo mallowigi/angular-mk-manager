@@ -1,4 +1,4 @@
-define(['angular'], function(angular) {
+define([], function() {
 	"use strict";
 	return function IndexController($scope, $socket, $t) {
 		//i18next
@@ -10,6 +10,6 @@ define(['angular'], function(angular) {
 		});
 		//angular service with socket.io
 		$socket.emit("test/event", $scope.hello);
-	}
+	};
 
 });
