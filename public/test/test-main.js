@@ -1,6 +1,11 @@
-// Load automatically all tests inside the __karma__.files array and put it in the 'deps' property
+// Bootstrapping karma-requirejs
+
 var tests = [];
 for (var file in window.__karma__.files) {
+	// Remove leading slash inserted by karma which triggered "no timestamp errors"
+	window.__karma__.files[file.replace(/^\//, '')] = window.__karma__.files[file];
+
+	// Put the files to test inside the tests array to be used as the deps config prop
 	if (window.__karma__.files.hasOwnProperty(file)) {
 		if (/Spec\.js$/.test(file)) {
 			tests.push(file);
@@ -12,7 +17,7 @@ require.config({
 	// By default karma are served unto the path /base
 	baseUrl: 'base/js',
 
-	paths:{
+	paths: {
 		'domReady': '../lib/requirejs-domready/domReady',
 		'jquery': '../lib/jquery/jquery.min',
 		'i18n': '../lib/i18next/release/i18next.amd.withJQuery-1.7.1.min',
@@ -21,11 +26,12 @@ require.config({
 		'ngResource': '../lib/angular-resource/angular-resource',
 		'uiBootstrap': '../lib/angular-bootstrap/ui-bootstrap',
 		'angularMocks': '../lib/angular-mocks/angular-mocks',
-		'lodash':'../lib/lodash/dist/lodash',
+		'lodash': '../lib/lodash/dist/lodash',
 		// Unit tests folder
 		'unit': '../test/spec',
 		// Functional tests folder
-		'func': '../test/functional'
+		'func': '../test/functional',
+		'mocks': '../test/mocks'
 	},
 
 	// AMD-readyisation

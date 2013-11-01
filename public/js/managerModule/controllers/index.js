@@ -12,6 +12,6 @@ define(['require', 'angular'
 	return angular.module('mk.managerModule.controllers', ['mk.managerModule.services'])
 		.controller('HeaderController', ['$scope', '$location', 'User', HeaderController])
 		.controller('IndexController', ['$scope', '$socket', '$t', IndexController])
-		.controller('RosterController', ['$scope', RosterController])
+		.controller('RosterController', ['$scope', '$routeParams', 'Roster', 'User', RosterController])
 
 });

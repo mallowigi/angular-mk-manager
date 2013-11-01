@@ -3,16 +3,13 @@
  */
 
 	// I put the manageRModule since it loads all that's required for the different module parts (controllers, services...)
-define(['angularMocks', 'managerModule/managerModule'
+define(['require'
 	, 'managerModule/controllers/HeaderController'
-], function(ngMocks, ManagerModule, HeaderController) {
+	, 'angularMocks'
+	, 'managerModule/managerModule'
+	, 'mocks/UserMock'
+], function(require, HeaderController) {
 	"use strict";
-	// Mock User
-	// Todo put in its own class
-	var mockUser = {
-		getUser: function() { return 'Mario'; },
-		isAuthenticated: function() { return true;}
-	}
 
 	describe('Testing Controllers:', function() {
 		"use strict";
@@ -70,6 +67,7 @@ define(['angularMocks', 'managerModule/managerModule'
 			});
 
 			describe('Creating a Mock User', function() {
+				var mockUser = require('mocks/UserMock');
 				beforeEach(function() {
 					headerCtrl = $controller('HeaderController', {
 						$scope: headerCtrlScope,

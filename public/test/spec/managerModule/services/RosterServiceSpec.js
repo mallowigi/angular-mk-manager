@@ -1,33 +1,50 @@
 /**
  * Created by Elior on 30/10/13.
  */
-define(['angularMocks', 'managerModule/managerModule'], function(ngMocks, ManagerModule) {
+define(['angularMocks', 'managerModule/managerModule', 'managerModule/services/Roster'], function(ngMocks, ManagerModule, Roster) {
 	"use strict";
 	var roster;
 
-	describe('Testing Services', function() {
+	describe('Testing services', function() {
 
-		beforeEach(module('mk.managerModule.services'));
+		describe('Testing the Roster service:', function() {
+			beforeEach(function() {
+				roster = new Roster();
+			});
 
-		beforeEach(inject(['Roster', function(Roster){
-			roster = Roster;
-		}]))
+			it('should be defined', function() {
+				expect(roster).toBeDefined();
+			});
 
-		it('should have a Roster Service declared', function() {
-			expect(roster).toBeDefined();
+			it('should be a map object', function() {
+				expect(_.isPlainObject(roster)).toBeTruthy();
+			})
+
+			it('should return a list of 10 characters', function() {
+				expect(_.keys(roster).length).toBe(10);
+			});
+
+			it('should have a character "Wario"', function() {
+				expect(roster['Wario']).toBeDefined();
+				expect(roster['Wario'].name).toBe('Wario');
+				expect(roster['Wario'].weight).toBe('heavy');
+				expect(roster['Wario'].speed).toBe('fast');
+				expect(roster['Wario'].accel).toBe('slow');
+			});
 		});
 
-		it('should return a list of 10 characters', function() {
+		describe('Testing integration with Angular:', function() {
 
-			expect(_.keys(roster).length).toBe(10);
-		});
+			beforeEach(module('mk.managerModule.services'));
 
-		it('should have a character "Wario"', function(){
-			expect(roster['Wario']).toBeDefined();
-			expect(roster['Wario'].name).toBe('Wario');
-			expect(roster['Wario'].weight).toBe('heavy');
-			expect(roster['Wario'].speed).toBe('fast');
-			expect(roster['Wario'].accel).toBe('slow');
+			beforeEach(inject(['Roster', function(_Roster_) {
+				roster = _Roster_;
+			}]))
+
+			it('should have a Roster Service declared', function() {
+				expect(roster).toBeDefined();
+			});
+
 		});
-	})
+	});
 })

@@ -3,7 +3,8 @@
  */
 define(['angular'], function(angular) {
 	"use strict";
-	return function RosterController($scope) {
-
+	return function RosterController($scope, $routeParams, Roster, User) {
+		$scope.user = User;
+		$scope.characters = Roster;
 	}
 })

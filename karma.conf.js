@@ -19,6 +19,7 @@ module.exports = function(config) {
 			{pattern: 'lib/**/*.js', included: false},
 			{pattern: 'js/**/*.js', included: false},
 			{pattern: 'test/spec/**/*.js', included: false},
+			{pattern: 'test/mocks/**/*.js', included: false},
 
 			// Requirejs main
 			'test/test-main.js',
@@ -63,6 +64,6 @@ module.exports = function(config) {
 
 		// Continuous Integration mode
 		// if true, it capture browsers, run tests and exit
-		singleRun: true
+		singleRun: false
 	});
 };
