@@ -2,8 +2,8 @@
  * Created by Elior on 24/10/13.
  */
 define(['require', 'angular'
-	, './controllers/index'
-	, './services/index'
+	, './controllers/ManagerModuleControllers'
+	, './services/ManagerModuleServices'
 ], function(require, angular, ControllersModule, ServicesModule) {
 	"use strict";
 	console.log('Loading Manager module...');

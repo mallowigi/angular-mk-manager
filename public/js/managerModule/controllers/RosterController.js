@@ -6,5 +6,6 @@ define(['angular'], function(angular) {
 	return function RosterController($scope, $routeParams, Roster, User) {
 		$scope.user = User;
 		$scope.characters = Roster;
+		$scope.selected = $scope.characters['Mario'];
 	}
 })

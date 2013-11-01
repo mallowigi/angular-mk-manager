@@ -24,6 +24,7 @@ module.exports = function(config) {
 			// Requirejs main
 			'test/test-main.js',
 
+
 			//			'public/lib/jquery/jquery.min.js',
 			//			'public/lib/i18next/release/i18next-1.7.1.min.js',
 			//			'public/lib/angular/angular.min.js',
@@ -64,6 +65,6 @@ module.exports = function(config) {
 
 		// Continuous Integration mode
 		// if true, it capture browsers, run tests and exit
-		singleRun: false
+		singleRun: true
 	});
 };

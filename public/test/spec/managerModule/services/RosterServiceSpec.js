@@ -1,11 +1,14 @@
 /**
  * Created by Elior on 30/10/13.
  */
-define(['angularMocks', 'managerModule/managerModule', 'managerModule/services/Roster'], function(ngMocks, ManagerModule, Roster) {
+define(['managerModule/services/Roster'
+	, 'angularMocks'
+	, 'managerModule/managerModule'
+], function(Roster) {
 	"use strict";
 	var roster;
 
-	describe('Testing services', function() {
+	describe('RosterService Tests:', function() {
 
 		describe('Testing the Roster service:', function() {
 			beforeEach(function() {

@@ -1,9 +1,38 @@
-define(['angularMocks', 'managerModule/managerModule'], function(ngMocks, ManagerModule) {
+define(['managerModule/services/User'
+	, 'angularMocks'
+	, 'managerModule/managerModule'
+], function(User) {
 	"use strict";
-	describe('Testing Services', function() {
+	var user;
+
+	describe('UserService Tests:', function() {
 		"use strict";
 
-		describe('Testing User', function() {
+		describe('Testing User Service:', function() {
+			var windowMock = {user: 'Mario'};
+
+			beforeEach(function() {
+				user = new User(windowMock);
+			});
+
+			it('should have a getUserName function', function() {
+				expect(user.getUser).toBeDefined();
+			});
+
+			it('should have a isAuthenticated function', function() {
+				expect(user.isAuthenticated).toBeDefined();
+			});
+
+			it('getUserName should return the window user property', function() {
+				expect(user.getUser()).toEqual(windowMock.user);
+			});
+
+			it('isAuthenticated should return true when window.name is defined', function(){
+				expect(user.isAuthenticated()).toBe(true);
+			});
+		});
+
+		describe('Testing UserService Angular integration:', function() {
 			"use strict";
 			beforeEach(module('mk.managerModule.services'));
 
@@ -11,21 +40,13 @@ define(['angularMocks', 'managerModule/managerModule'], function(ngMocks, Manage
 				expect(User).toBeDefined();
 			}]));
 
-			describe('Testing getUserName', function() {
-				var user;
+			describe('Testing methods:', function() {
+
 				beforeEach(inject(['User', function(User) {
 					user = User;
 				}]));
 
-				it('should have a getUserName function', function() {
-					expect(user.getUser).toBeDefined();
-				});
-
-				it('should have a isAuthenticated function', function() {
-					expect(user.isAuthenticated).toBeDefined();
-				});
-
-				describe('Tests before authentication', function() {
+				describe('Tests before authentication:', function() {
 					it('should return undefined when no user is logged', function() {
 						expect(user.getUser()).toBeNull();
 					});
@@ -35,7 +56,7 @@ define(['angularMocks', 'managerModule/managerModule'], function(ngMocks, Manage
 					});
 				});
 
-				describe('Tests after authentication', function() {
+				describe('Tests after authentication:', function() {
 					"use strict";
 					var oldUser;
 
