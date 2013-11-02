@@ -1,0 +1,18 @@
+<section data-ng-controller="CharacterController">
+  <div data-ng-show="error">
+    <div class="alert">{{ error }}</div>
+  </div>
+
+  <div data-ng-hide="error">
+    <h2>Info for {{character.name}}</h2>
+    <dl>
+      <dd>Speed</dd>
+      <dt>{{ character.speed }}</dt>
+      <dd>Acceleration</dd>
+      <dt>{{ character.accel }}</dt>
+      <dd>Weight</dd>
+      <dt>{{ character.weight }}</dt>
+    </dl>
+  </div>
+  <a href="#/roster">Return to Character List</a>
+</section>

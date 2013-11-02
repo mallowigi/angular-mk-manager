@@ -1,0 +1,7 @@
+<section data-ng-controller="RosterController">
+  <h2>Choose your character</h2>
+
+  <div data-ng-repeat="character in characters">
+    <a href="#!/roster/{{character.name}}" data-ng-class="{active: isSelected(character)}">{{character.name}}</a>
+  </div>
+</section>

@@ -9,5 +9,5 @@ define([], function() {
 	return {
 		getUser: function() { return 'Mario'; },
 		isAuthenticated: function() { return true;}
-	}
-})
+	};
+});

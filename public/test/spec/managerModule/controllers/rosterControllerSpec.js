@@ -16,6 +16,7 @@ define(['require'
 		describe('Testing RosterController function: ', function() {
 			// Mocks
 			var routeParamsMock = jasmine.createSpy('$routeParams'),
+				loggerMock = jasmine.createSpyObj('$logger', ['debug', 'info', 'error', 'warn']),
 				userMock = require('mocks/UserMock'),
 				rosterMock = {
 					'Mario': {name: 'Mario'},
@@ -24,7 +25,7 @@ define(['require'
 
 			beforeEach(function() {
 				rosterCtrlScope = {};
-				rosterCtrl = new RosterController(rosterCtrlScope, routeParamsMock, rosterMock, userMock);
+				rosterCtrl = new RosterController(rosterCtrlScope, routeParamsMock, loggerMock, rosterMock, userMock);
 			});
 
 			it('should be defined', function() {
@@ -59,7 +60,7 @@ define(['require'
 
 		describe('Testing RosterController Angular integration:', function() {
 
-			beforeEach(module('mk.managerModule.controllers'));
+			beforeEach(module('mk.managerModule'));
 
 			beforeEach(inject(['$rootScope', '$controller', function(_$rootScope_, _$controller_) {
 				$rootScope = _$rootScope_;
@@ -97,7 +98,6 @@ define(['require'
 			it('should have the selected character according to routeParams', function() {
 				expect(rosterCtrlScope.selected.name).toBe('Luigi');
 			});
-
 
 		});
 

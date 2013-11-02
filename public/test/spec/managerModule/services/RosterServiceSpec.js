@@ -9,10 +9,11 @@ define(['managerModule/services/Roster'
 	var roster;
 
 	describe('RosterService Tests:', function() {
+		var loggerMock = jasmine.createSpyObj('$logger', ['debug', 'info', 'warn', 'error']);
 
 		describe('Testing the Roster service:', function() {
 			beforeEach(function() {
-				roster = new Roster();
+				roster = new Roster(loggerMock);
 			});
 
 			it('should be defined', function() {
@@ -21,33 +22,38 @@ define(['managerModule/services/Roster'
 
 			it('should be a map object', function() {
 				expect(_.isPlainObject(roster)).toBeTruthy();
-			})
+			});
 
 			it('should return a list of 10 characters', function() {
 				expect(_.keys(roster).length).toBe(10);
 			});
 
 			it('should have a character "Wario"', function() {
-				expect(roster['Wario']).toBeDefined();
-				expect(roster['Wario'].name).toBe('Wario');
-				expect(roster['Wario'].weight).toBe('heavy');
-				expect(roster['Wario'].speed).toBe('fast');
-				expect(roster['Wario'].accel).toBe('slow');
+				var wario = {
+					name: 'Wario',
+					weight: 'heavy',
+					speed: 'fast',
+					accel: 'slow'
+				};
+				expect(roster.Wario).toEqual(wario);
 			});
 		});
 
 		describe('Testing integration with Angular:', function() {
 
-			beforeEach(module('mk.managerModule.services'));
+			beforeEach(module('mk.managerModule'));
 
-			beforeEach(inject(['Roster', function(_Roster_) {
-				roster = _Roster_;
-			}]))
+			beforeEach(inject(['Roster', function(Roster) {
+				roster = Roster;
+			}]));
 
 			it('should have a Roster Service declared', function() {
 				expect(roster).toBeDefined();
 			});
 
+			it('should have 10 characters in it', function(){
+				expect(_.keys(roster).length).toEqual(10);
+			});
 		});
 	});
-})
+});

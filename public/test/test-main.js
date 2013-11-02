@@ -27,6 +27,7 @@ require.config({
 		'uiBootstrap': '../lib/angular-bootstrap/ui-bootstrap',
 		'angularMocks': '../lib/angular-mocks/angular-mocks',
 		'lodash': '../lib/lodash/dist/lodash',
+		'log': '../lib/loglevel/lib/loglevel',
 		// Unit tests folder
 		'unit': '../test/spec',
 		// Functional tests folder
@@ -36,8 +37,14 @@ require.config({
 
 	// AMD-readyisation
 	shim: {
+		'lodash': {
+			exports: '_'
+		},
+		'jquery': {
+			exports: '$'
+		},
 		'angular': {
-			deps: ['jquery', 'lodash'],
+			deps: ['jquery', 'lodash', 'log'],
 			exports: 'angular'
 		},
 		'ngCookies': ['angular'],
@@ -45,6 +52,8 @@ require.config({
 		'uiBootstrap': ['angular'],
 		'angularMocks': ['angular']
 	},
+	// Prioritization
+	priority: ['angular'],
 
 	// Tests to run
 	deps: tests,

@@ -6,13 +6,13 @@ define(['managerModule/services/User'
 	var user;
 
 	describe('UserService Tests:', function() {
-		"use strict";
 
 		describe('Testing User Service:', function() {
-			var windowMock = {user: 'Mario'};
+			var windowMock = {user: 'Mario'},
+				loggerMock = jasmine.createSpyObj('$logger',['debug','info','error','warn']);
 
 			beforeEach(function() {
-				user = new User(windowMock);
+				user = new User(windowMock, loggerMock);
 			});
 
 			it('should have a getUserName function', function() {
@@ -33,8 +33,7 @@ define(['managerModule/services/User'
 		});
 
 		describe('Testing UserService Angular integration:', function() {
-			"use strict";
-			beforeEach(module('mk.managerModule.services'));
+			beforeEach(module('mk.managerModule'));
 
 			it('should have a User declared', inject(['User', function(User) {
 				expect(User).toBeDefined();
@@ -57,7 +56,6 @@ define(['managerModule/services/User'
 				});
 
 				describe('Tests after authentication:', function() {
-					"use strict";
 					var oldUser;
 
 					beforeEach(inject(['$window', function($window) {

@@ -10,18 +10,19 @@ define(['require'
 	, 'mocks/UserMock'
 ], function(require, HeaderController) {
 	"use strict";
-	var $rootScope, $controller, headerCtrlScope, headerCtrl;
+	var $rootScope, $controller, headerCtrlScope, headerCtrl,
+		locationMock = jasmine.createSpy('$location'),
+		loggerMock = jasmine.createSpyObj('$logger', ['debug', 'info', 'error', 'warn']),
+		userMock = require('mocks/UserMock');
 
 	describe('HeaderController Tests:', function() {
 
 		describe('Testing HeaderController function:', function() {
 			// Mocks
-			var locationMock = jasmine.createSpy('$location'),
-				userMock = require('mocks/UserMock'),
-				headerCtrlScope = {};
+			var headerCtrlScope = {};
 
 			beforeEach(function() {
-				headerCtrl = new HeaderController(headerCtrlScope, locationMock, userMock);
+				headerCtrl = new HeaderController(headerCtrlScope, locationMock, loggerMock, userMock);
 			});
 
 			it('should be initialized', function() {
@@ -30,7 +31,7 @@ define(['require'
 
 			it('should have a User attached', function() {
 				expect(headerCtrlScope.user).toBeDefined();
-			})
+			});
 
 			it('should have the user defined as Mario', function() {
 				expect(headerCtrlScope.user).toBe('Mario');
@@ -38,15 +39,14 @@ define(['require'
 
 			it('should have the user authenticated', function() {
 				expect(headerCtrlScope.isAuth).toBe(true);
-			})
+			});
 
 		});
 
 		describe('Testing HeaderController Angular integration:', function() {
-			"use strict";
 
 			// Load the controllers module
-			beforeEach(module('mk.managerModule.controllers'));
+			beforeEach(module('mk.managerModule'));
 
 			// Retrieve angular services
 			beforeEach(inject(['$rootScope', '$controller', function(_$rootScope_, _$controller_) {

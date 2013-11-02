@@ -12,5 +12,8 @@ define([], function() {
 
 		selected = $routeParams.selected || 'Mario';
 		$scope.selected = $scope.characters[selected];
+		$scope.isSelected = function(character){
+			return $scope.selected.name === character.name;
+		};
 	};
 });
