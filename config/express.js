@@ -8,7 +8,14 @@ var express = require('express')
 	, helpers = require('view-helpers')
 	, i18n = require('i18next');
 
-module.exports = function(app, config, passport) {
+/**
+ * Configure the express server
+ * @param app the server
+ * @param config the express config
+ * @param passport the passport config
+ * @param mimosa the mimosa config
+ */
+module.exports = function(app, config, passport, mimosa) {
 	'use strict';
 	app.set('showStackError', true);
 
@@ -48,9 +55,10 @@ module.exports = function(app, config, passport) {
 		app.use(express.logger('dev'));
 	}
 
+	var viewsPath = mimosa.server.views.path || '/app/views';
 	// set views path, template engine and default layout
-	app.set('views', config.root + '/app/views');
-	app.set('view engine', 'jade');
+	app.set('views', viewsPath);
+	app.set('view engine', mimosa.server.views.compileWith || 'jade');
 
 	// enable jsonp
 	app.enable("jsonp callback");

@@ -38,15 +38,15 @@ define(['angular', 'i18n', 'log', 'app'], function(angular, i18n, log, MarioKart
 	});
 
 	//Setting i18next with jQuery
-	$.i18n.init({
-		lng: 'en',
-		detectLngQS: 'locale',
-		cookieName: 'locale',
-		supportedLngs: ['en'],
-		fallbackLng: 'en',
-		resGetPath: "locales/resources.json?lng=__lng__&ns=__ns__",
-		dynamicLoad: true,
-	});
+//	$.i18n.init({
+//		lng: 'en',
+//		detectLngQS: 'locale',
+//		cookieName: 'locale',
+//		supportedLngs: ['en'],
+//		fallbackLng: 'en',
+//		resGetPath: "locales/resources.json?lng=__lng__&ns=__ns__",
+//		dynamicLoad: true,
+//	});
 
 	return MarioKartManagerApp;
 });

@@ -6,15 +6,15 @@ require.config({
 	baseUrl: 'js',
 
 	paths: {
-		'domReady': '../lib/requirejs-domready/domReady',
-		'jquery': '../lib/jquery/jquery.min',
-		'i18n': '../lib/i18next/release/i18next.amd.withJQuery-1.7.1.min',
-		'angular': '../lib/angular/angular',
-		'ngCookies': '../lib/angular-cookies/angular-cookies',
-		'ngResource': '../lib/angular-resource/angular-resource',
-		'uiBootstrap': '../lib/angular-bootstrap/ui-bootstrap',
-		'lodash': '../lib/lodash/dist/lodash',
-		'log': '../lib/loglevel/lib/loglevel'
+		'domReady': "../lib/domReady",
+		'jquery': '../lib/jquery',
+		'i18n': '../lib/i18next.amd-1.7.1.min',
+		'angular': '../lib/angular',
+		'ngCookies': '../lib/angular-cookies',
+		'ngResource': '../lib/angular-resource',
+		'uiBootstrap': '../lib/ui-bootstrap-tpls',
+		'lodash': '../lib/lodash',
+		'log': '../lib/loglevel.min'
 	},
 
 	// AMD-readyisation

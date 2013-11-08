@@ -1,7 +1,7 @@
-define(['angular'], function(angular) {
+define(['angular','i18n'], function(angular, i18n) {
 	"use strict";
 	return angular.module('ng.i18next', [])
 		.factory('$t', function() {
-			return jQuery.t;
+			return i18n.t;
 		});
 });
