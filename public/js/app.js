@@ -7,9 +7,10 @@ define(['angular', 'log'
 
 ], function(angular, log) {
 	"use strict";
+	var marioKartApp;
 	log.debug('Initializing App...');
 
-	var MarioKartApp = angular.module('mk', [
+	marioKartApp = angular.module('mk', [
 		'ngCookies',
 		'ngResource',
 		'ui.bootstrap',
@@ -19,6 +20,6 @@ define(['angular', 'log'
 		'mk.managerModule'
 	]);
 
-	return MarioKartApp;
+	return marioKartApp;
 });
 

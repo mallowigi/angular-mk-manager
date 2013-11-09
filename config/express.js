@@ -46,7 +46,7 @@ module.exports = function(app, config, passport, mimosa) {
 	/**
 	 * Serves the /public directory at the server address
 	 */
-	app.use(express.static(config.root + '/public'));
+	app.use(express.static(config.root + '/web'));
 
 
 

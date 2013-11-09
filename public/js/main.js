@@ -36,7 +36,7 @@ require.config({
 	// Prioritization
 	priority: ['angular'],
 
-	deps: ['init'],
+	deps: ['init']
 
 });
 

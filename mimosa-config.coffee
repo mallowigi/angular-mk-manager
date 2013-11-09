@@ -8,7 +8,7 @@
 
 exports.config = {
 
-	modules: ['server', 'require', 'minify', 'bower']
+	modules: ['jshint','server', 'require', 'live-reload', 'minify', 'bower']
 
 	watch:
 		sourceDir: "public"
@@ -18,7 +18,7 @@ exports.config = {
 
 	vendor:
 		javascripts: "lib"
-		stylesheets: "lib"
+		stylesheets: "lib/css"
 
 	coffeescript:
 		sourceMap: true
@@ -34,7 +34,6 @@ exports.config = {
 	server:
 		path: 'server.js'
 		port: 3000
-		base: ''
 		views:
 			compileWith: 'jade'
 			extension: 'jade'
@@ -71,7 +70,7 @@ exports.config = {
 	bower:
 		watch: true
 		bowerDir:
-		#path: "public/lib"
+			path: ".mimosa/bower_components"
 			clean: true
 
 		copy:

@@ -8,11 +8,12 @@ define(['require', 'angular'
 	, './services/ManagerModuleServices'
 ], function(require, angular, log) {
 	"use strict";
+	var module;
 	log.debug('Loading Manager module...');
 
 	// Registers module a la symfony.
 	// Load also outside modules such as ngLogger to be testable standalone
-	var module = angular.module('mk.managerModule', [
+	module = angular.module('mk.managerModule', [
 		'ngLogger',
 		'mk.managerModule.services',
 		'mk.managerModule.controllers'

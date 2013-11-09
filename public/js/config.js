@@ -5,17 +5,17 @@ define(['angular', 'i18n', 'log', 'app'], function(angular, i18n, log, MarioKart
 	MarioKartManagerApp.config(['$routeProvider', function($routeProvider) {
 		$routeProvider
 			.when('/roster', {
-				templateUrl: 'views/roster/characterList.html',
+				templateUrl: 'views/roster/characterList.html'
 			})
 			.when('/roster/:selected', {
-				templateUrl: 'views/roster/characterInfo.html',
+				templateUrl: 'views/roster/characterInfo.html'
 			})
 			.otherwise({
 				templateUrl: 'views/index.html'
 			});
 	}]);
 
-	//Removing tomcat unspported headers
+	//Removing tomcat unsupported headers
 	MarioKartManagerApp.config(['$httpProvider', function($httpProvider) {
 		delete $httpProvider.defaults.headers.common["X-Requested-With"];
 	}]);
@@ -34,7 +34,7 @@ define(['angular', 'i18n', 'log', 'app'], function(angular, i18n, log, MarioKart
 		supportedLngs: ['en'],
 		fallbackLng: 'en',
 		resGetPath: "locales/resources.json?lng=__lng__&ns=__ns__",
-		dynamicLoad: true,
+		dynamicLoad: true
 	});
 
 	//Setting i18next with jQuery

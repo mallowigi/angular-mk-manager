@@ -4,18 +4,19 @@
 define([], function() {
 	"use strict";
 
-	var Character = function(name, options) {
+	function Character(name, options) {
 		options = options || {};
 		this.name = name;
 		this.speed = options.speed || 'average';
 		this.accel = options.accel || 'average';
 		this.weight = options.weight || 'medium';
-	};
+	}
 
 	return function Roster($logger) {
+		var roster;
 		$logger.debug('Creating a Roster');
 
-		var roster = {
+		roster = {
 			'Mario': new Character('Mario'),
 			'Luigi': new Character('Luigi'),
 			'Peach': new Character('Peach', {'speed': 'average', 'accel': 'fast', 'weight': 'light'}),
