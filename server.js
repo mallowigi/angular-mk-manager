@@ -67,13 +67,14 @@ exports.startServer = function(mimosaConfig, done) {
 	console.log('Express app started on port ' + port);
 
 	// Socket.io start
-	require('./config/socket.io')(server, config);
+	var io = require('./config/socket.io')(server, config);
 
 	//Initializing logger
 	logger.init(app, passport, mongoose);
 
 	// expose app
-	module.exports = app;
+	module.exports = server;
 
-	done(app);
+	// Then watch the server with mimosa
+	done(server, io);
 };

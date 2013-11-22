@@ -20,5 +20,5 @@ module.exports = function(server, config) {
 		socket.emit('test/another/event', {data: i18n.t('world')});
 
 	});
-
+	return io;
 };

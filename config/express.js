@@ -17,6 +17,8 @@ var express = require('express')
  */
 module.exports = function(app, config, passport, mimosa) {
 	'use strict';
+	var viewsPath,
+		publicDir;
 	app.set('showStackError', true);
 
 	// should be placed before express.static
@@ -46,16 +48,15 @@ module.exports = function(app, config, passport, mimosa) {
 	/**
 	 * Serves the /public directory at the server address
 	 */
-	app.use(express.static(config.root + '/web'));
-
-
+	publicDir = mimosa.server.public || 'web';
+	app.use(express.static(config.root + '/' + publicDir));
 
 	// don't use logger for test env
 	if (process.env.NODE_ENV !== 'test') {
 		app.use(express.logger('dev'));
 	}
 
-	var viewsPath = mimosa.server.views.path || '/app/views';
+	viewsPath = mimosa.server.views.path || '/app/views';
 	// set views path, template engine and default layout
 	app.set('views', viewsPath);
 	app.set('view engine', mimosa.server.views.compileWith || 'jade');

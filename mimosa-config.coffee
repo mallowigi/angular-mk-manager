@@ -8,7 +8,7 @@
 
 exports.config = {
 
-	modules: ['jshint','server', 'require', 'live-reload', 'minify', 'bower']
+	modules: ['jshint', 'server', 'require', 'live-reload', 'minify', 'bower', 'server-reload']
 
 	watch:
 		sourceDir: "public"
@@ -28,12 +28,14 @@ exports.config = {
 
 	copy:
 		extensions: [
-			"js", "css", "png", "jpg", "jpeg", "gif", "html", "eot", "svg", "ttf", "woff", "otf", "yaml", "kml", "ico", "htc", "htm", "json",
+			"js", "css", "png", "jpg", "jpeg", "gif", "html", "eot", "svg", "ttf", "woff", "otf", "yaml", "kml", "ico", "htc", "htm",
+			"json",
 			"txt", "xml", "xsd", "map", "md"]
 
 	server:
 		path: 'server.js'
 		port: 3000
+		public: 'web'
 		views:
 			compileWith: 'jade'
 			extension: 'jade'
@@ -86,4 +88,9 @@ exports.config = {
 
 	karma:
 		configFile: 'karma.conf.js'
+
+	serverReload:
+		watch: ["server.js", "server.coffee", "app", "config"]
+		validate: true
+
 }
