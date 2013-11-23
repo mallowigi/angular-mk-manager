@@ -3,8 +3,9 @@ define(['angular', 'log'
 	, 'services/socket.io'
 	, 'services/i18next'
 	, 'services/logger'
+	, 'services/User'
 	, 'managerModule/managerModule'
-
+	, 'tournamentsModule/tournamentsModule'
 ], function(angular, log) {
 	"use strict";
 	var marioKartApp;
@@ -17,7 +18,9 @@ define(['angular', 'log'
 		'ngSocket',
 		'ng.i18next',
 		'ngLogger',
-		'mk.managerModule'
+		'User',
+		'mk.managerModule',
+		'mk.tournamentsModule'
 	]);
 
 	return marioKartApp;

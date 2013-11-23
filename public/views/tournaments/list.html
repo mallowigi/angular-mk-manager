@@ -1,0 +1,11 @@
+<div data-ng-controller="TournamentsController">
+    <h2>Tournaments</h2>
+    <ul class="unstyled">
+        <li data-ng-repeat="tournament in tournaments">
+            <a data-ng-href="#!/tournaments/{{ tournament._id }}">{{ tournament.name }}</a>
+            <a data-ng-href="#!/tournaments/{{ tournament._id }}/edit">Edit</a>
+            <a href="void(0)" data-ng-click="destroy(tournament)">Delete</a>
+        </li>
+    </ul>
+    <a href="#!/tournaments/create">Create a new tournament</a>
+</div>

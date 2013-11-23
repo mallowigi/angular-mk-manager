@@ -43,5 +43,5 @@ require.config({
 // config non-angular logger
 require(['log'], function(log) {
 	"use strict";
-	log.setLevel('trace');
+	log.setLevel('debug');
 });

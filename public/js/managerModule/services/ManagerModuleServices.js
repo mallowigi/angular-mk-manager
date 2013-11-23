@@ -3,7 +3,7 @@
  */
 define(['require', 'angular'
 	, 'log'
-	, './User'
+	, 'services/User'
 	, './Roster'
 ], function(require, angular, log, UserService, RosterService) {
 	"use strict";
@@ -11,7 +11,6 @@ define(['require', 'angular'
 
 	// Load the angular module
 	return angular.module('mk.managerModule.services', [])
-		.factory('User', ['$window', '$logger', UserService])
 		.factory('Roster', ['$logger', RosterService]);
 
 });
