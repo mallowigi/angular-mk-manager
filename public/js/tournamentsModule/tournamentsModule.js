@@ -16,7 +16,7 @@ define(['require', 'angular'
 	module = angular.module('mk.tournamentsModule', [
 		'ngLogger',
 		'mk.tournamentsModule.services',
-		'mk.managerModule.controllers'
+		'mk.tournamentsModule.controllers'
 	]);
 
 	return module;

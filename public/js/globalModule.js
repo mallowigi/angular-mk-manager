@@ -8,9 +8,10 @@
 define(['angular'
 	, 'services/User'
 	, 'controllers/HeaderController'
-], function(angular, UserService, HeaderController) {
+	, 'directives/NavbarDirective'
+], function(angular, UserService, HeaderController, NavbarDirective) {
 	"use strict";
-	var globalModule = angular.module('mk.global', []);
+	var globalModule = angular.module('mk.global', ['ngLogger']);
 
 	// Global services
 	globalModule
@@ -22,5 +23,9 @@ define(['angular'
 		.controller('HeaderController', ['$scope', '$location', '$logger', 'User', HeaderController])
 	;
 
+	// Global directives
+	globalModule
+		.directive('navbar', ['$logger', NavbarDirective])
+	;
 	return globalModule;
 });
