@@ -1,7 +1,7 @@
 /**
  * Created by Elior on 24/10/13.
  */
-require.config({
+requirejs.config({
 
 	baseUrl: 'js',
 
@@ -36,6 +36,7 @@ require.config({
 	// Prioritization
 	priority: ['angular'],
 
+	// Run init
 	deps: ['init']
 
 });

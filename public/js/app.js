@@ -1,9 +1,12 @@
-define(['angular', 'log'
-	, 'ngCookies', 'ngResource', 'uiBootstrap'
+define(['angular'
+	, 'log'
+	, 'ngCookies'
+	, 'ngResource'
+	, 'uiBootstrap'
 	, 'services/socket.io'
 	, 'services/i18next'
 	, 'services/logger'
-	, 'services/User'
+	, 'globalModule'
 	, 'managerModule/managerModule'
 	, 'tournamentsModule/tournamentsModule'
 ], function(angular, log) {
@@ -18,7 +21,7 @@ define(['angular', 'log'
 		'ngSocket',
 		'ng.i18next',
 		'ngLogger',
-		'User',
+		'mk.global',
 		'mk.managerModule',
 		'mk.tournamentsModule'
 	]);

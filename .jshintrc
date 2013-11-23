@@ -1,6 +1,6 @@
 {
 	"node": true,
-	"jquery":true,
+	"jquery": true,
 	"esnext": true,
 	"regexp": true,
 	"curly": true,
@@ -24,5 +24,6 @@
 	"smarttabs": true,
 	"browser": true,
 	"devel": true,
-    "predef": [ "define", "require", "_", "jasmine", "beforeEach", "afterEach", "it", "expect", "describe", "ddescribe", "iit", "xit", "confirm", "spyOn", "waitsFor", "module", "inject", "log"]
+	"predef": [ "define", "require", "requirejs", "_", "jasmine", "beforeEach", "afterEach", "it", "expect",
+		"describe", "ddescribe", "iit", "xit", "confirm", "spyOn", "waitsFor", "module", "inject", "log"]
 }
