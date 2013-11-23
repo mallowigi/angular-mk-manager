@@ -55,3 +55,6 @@ nbproject
 Thumbs.db
 *.iml
 .idea
+
+#Other related project files
+/public/lib/
