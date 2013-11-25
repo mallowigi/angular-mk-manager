@@ -161,11 +161,22 @@ module.exports = function(app, config, passport, mimosa) {
 			return next();
 		}
 
+		err.status = err.status || 500;
+		err.message = err.message || "Internal Server Error";
+		err.code = err.code || "INTERNAL_ERROR";
+
 		// log it
 		console.error(err.stack);
 
-		// error page
-		res.status(500).render('500', { error: err.stack });
+		// If HTTP Request
+		if (req.xhr) {
+			res.status(err.status).jsonp(err);
+		}
+		else {
+
+			// error page
+			res.status(err.status).render('500', { error: err.stack });
+		}
 	});
 
 	// assume 404 since no middleware responded

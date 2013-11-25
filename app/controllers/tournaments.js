@@ -2,9 +2,7 @@
  * Created by Elior on 09/11/13.
  */
 var mongoose = require('mongoose'),
-	async = require('async'),
-	Tournament = mongoose.model('Tournament'),
-	_ = require('lodash');
+	Tournament = mongoose.model('Tournament');
 
 /**
  * Create a tournament and return it in the response in JSON format

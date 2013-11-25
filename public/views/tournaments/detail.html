@@ -1,0 +1,13 @@
+<div data-ng-controller="TournamentController" data-ng-cloak>
+    <div data-ng-show="error" class="alert alert-danger">
+        {{ error  }}
+    </div>
+    <div data-ng-hide="error">
+        <h2>{{ tournament.name }}</h2>
+
+        <p><strong>Player: {{ tournament.player.name }}</strong></p>
+
+        <a href="#!/tournaments">Return to Tournament List</a>
+    </div>
+
+</div>

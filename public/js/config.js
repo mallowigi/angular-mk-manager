@@ -16,10 +16,10 @@ define(['angular', 'i18n', 'log', 'app'], function(angular, i18n, log, MarioKart
 			.when('/tournaments/create', {
 				templateUrl: 'views/tournaments/create.html'
 			})
-			.when('/tournaments/:id/edit', {
+			.when('/tournament/:id/edit', {
 				templateUrl: 'views/tournaments/update.html'
 			})
-			.when('/tournaments/:id', {
+			.when('/tournament/:id', {
 				templateUrl: 'views/tournaments/detail.html'
 			})
 			.when('/', {

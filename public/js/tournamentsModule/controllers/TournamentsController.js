@@ -11,6 +11,7 @@ define([
 		 * Create a tournament
 		 */
 		$scope.create = function() {
+			$logger.debug("Creating tournament %s", $scope.tournament.name);
 			// Create the tournament to be send to the server
 			var tournament = new Tournament({
 				name: this.tournament.name, //this will be from the form
@@ -19,6 +20,7 @@ define([
 
 			// Save it on the server and redirect to it
 			tournament.$save(function(response) {
+				$logger.debug("Receiving id %o from server", response);
 				$location.path("tournament/" + response._id);
 			});
 

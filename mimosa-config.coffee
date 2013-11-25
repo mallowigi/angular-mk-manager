@@ -91,6 +91,6 @@ exports.config = {
 
 	serverReload:
 		watch: ["server.js", "server.coffee", "app", "config"]
-		validate: true
+		validate: false
 
 }
