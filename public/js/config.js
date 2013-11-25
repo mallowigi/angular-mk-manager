@@ -22,8 +22,11 @@ define(['angular', 'i18n', 'log', 'app'], function(angular, i18n, log, MarioKart
 			.when('/tournaments/:id', {
 				templateUrl: 'views/tournaments/detail.html'
 			})
-			.otherwise({
+			.when('/', {
 				templateUrl: 'views/index.html'
+			})
+			.otherwise({
+				templateUrl: 'views/404.html'
 			});
 	}]);
 

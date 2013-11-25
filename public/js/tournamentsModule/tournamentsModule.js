@@ -1,9 +1,9 @@
 /**
  * Created by eliorb on 22/11/13.
  */
-define(['require', 'angular'
+define(['require'
+	, 'angular'
 	, 'log'
-	, 'services/logger'
 	, './controllers/TournamentsModuleControllers'
 	, './services/TournamentsModuleServices'
 ], function(require, angular, log) {
@@ -14,7 +14,6 @@ define(['require', 'angular'
 	// Registers module a la symfony.
 	// Load also outside modules such as ngLogger to be testable standalone
 	module = angular.module('mk.tournamentsModule', [
-		'ngLogger',
 		'mk.tournamentsModule.services',
 		'mk.tournamentsModule.controllers'
 	]);

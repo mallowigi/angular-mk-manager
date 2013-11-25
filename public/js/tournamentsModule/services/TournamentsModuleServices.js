@@ -11,8 +11,8 @@ define(['require'
 	"use strict";
 	log.debug('Loading Tournaments Module Services');
 
-	return angular.module('mk.tournamentsModule.services', ['ngResource'])
-		.factory('Tournament', ['$logger', '$ngResource', Tournament])
+	return angular.module('mk.tournamentsModule.services', [])
+		.factory('Tournament', ['$logger', '$resource', Tournament])
 	;
 
 });
