@@ -12,7 +12,7 @@ define([], function() {
 		Tournament.get({tournamentId: tournamentId}, function(response) {
 			$logger.info('Successfully retrieved tournament from the server: %o', response);
 			$scope.tournament = response;
-		}, function(error) {
+		}, function() {
 			$scope.error = "Cannot find the requested tournament";
 		});
 	};

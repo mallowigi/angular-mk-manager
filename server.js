@@ -32,7 +32,8 @@ exports.startServer = function(mimosaConfig, done) {
 	var env = process.env.NODE_ENV || mimosaConfig.server.env || 'development',
 		port = process.env.port || mimosaConfig.server.port || 3000,
 		config = require('./config/config')[env],
-		auth = require('./config/middlewares/authorization');
+		auth = require('./config/middlewares/authorization'),
+        ajaxAuth = require('./config/middlewares/ajaxAuth');
 
 	// Bootstrap db connection
 	mongoose.connect(config.db, function(err) {
@@ -57,7 +58,7 @@ exports.startServer = function(mimosaConfig, done) {
 	require('./config/express')(app, config, passport, mimosaConfig);
 
 	// Bootstrap routes
-	require('./app/routes/routes')(app, passport, auth);
+	require('./app/routes/routes')(app, passport, auth, ajaxAuth);
 
 	//i18next setings
 	require('./config/i18next')(app, config);

@@ -1,4 +1,4 @@
-module.exports = function(app, passport, auth) {
+module.exports = function(app, passport, auth, ajaxAuth) {
 	'use strict';
 
 	// users routes
@@ -7,8 +7,8 @@ module.exports = function(app, passport, auth) {
 	// authentication routes
 	require('./auth')(app, passport, auth);
 
-	// tournaments
-	require('./tournaments')(app, auth);
+	// tournaments (AJAX)
+	require('./tournaments')(app, ajaxAuth);
 
 	// home route
 	var index = require('../controllers/index');

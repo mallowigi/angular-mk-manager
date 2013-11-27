@@ -5,7 +5,7 @@
 exports.requiresLogin = function(req, res, next) {
 	'use strict';
 	if (!req.isAuthenticated()) {
-		return res.redirect('/login');
+		return res.redirect('/signin');
 	}
 	next();
 };
