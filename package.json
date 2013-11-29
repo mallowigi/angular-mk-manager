@@ -1,5 +1,5 @@
 {
-	"name": "meanis",
+	"name": "mk-mananger",
 	"description": "Mongo, Express, AngularJS, Node, I18next, Socket.io",
 	"version": "1.0.0",
 	"private": false,

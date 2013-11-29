@@ -13,7 +13,7 @@ var TournamentSchema = new Schema({
 });
 
 // Static methods
-TournamentSchema.statics.find = function(id, done) {
+TournamentSchema.statics.load = function(id, done) {
 	"use strict";
 	// Find one tournament with this id left join with User table with player ID
 	this.findOne({_id: id}).populate('playerID').exec(done);

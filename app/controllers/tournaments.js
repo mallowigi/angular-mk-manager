@@ -2,7 +2,7 @@
  * Created by Elior on 09/11/13.
  */
 var mongoose = require('mongoose'),
-	Tournament = mongoose.model('Tournament');
+	TournamentModel = mongoose.model('Tournament');
 
 /**
  * Create a tournament and return it in the response in JSON format
@@ -12,7 +12,7 @@ var mongoose = require('mongoose'),
 exports.createTournament = function(req, res) {
 	"use strict";
 	// Tournaments are being passed by the client when submitting and user is part of the request itself
-	var tournament = new Tournament(req.body);
+	var tournament = new TournamentModel(req.body);
 	tournament.playerID = req.user;
 	// persist into the db
 	tournament.save();
@@ -41,7 +41,7 @@ exports.showTournament = function(req, res) {
 exports.findTournament = function(req, res, next, id) {
 	"use strict";
 	// Call the static find method
-	Tournament.find(id, function(error, tournament) {
+	TournamentModel.find(id, function(error, tournament) {
 		// If error with the request
 		if (error) {
 			return next(error);
@@ -64,7 +64,7 @@ exports.findTournament = function(req, res, next, id) {
 exports.getAllTournaments = function(req, res) {
 	"use strict";
 	// Get all tournaments in the db
-	Tournament.find().populate('playerID').exec(function(err, tournaments) {
+	TournamentModel.find().populate('playerID').exec(function(err, tournaments) {
 		// If error in the database
 		if (err) {
 			res.render('error', {status: 500});
