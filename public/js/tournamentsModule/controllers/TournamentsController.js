@@ -23,9 +23,11 @@ define([
                 $logger.debug("Receiving id %o from server", response);
                 $location.path("tournament/" + response._id);
             }, function(error) {
+                $logger.debug("Error: %o", error.data);
+                $scope.error = error.data.message;
+
+                // Redirect to authentication page
                 if (error.status === 401 && error.data) {
-                    $logger.debug("Error: %o", error.data);
-                    $scope.error = error.data.message;
                     if (error.data.redirect) {
                         window.location = error.data.redirect;
                     }
@@ -33,18 +35,25 @@ define([
             });
 
             // resets the value
-            this.tournament.name = "";
+//            this.tournament.name = "";
         };
 
         /**
          * Get all tournaments
-         * @param query a query to filter the tournaments
+         * @param query optional query parameters
          */
         $scope.all = function(query) {
             // We use the ngResource api
             Tournament.query(query, function(tournaments) {
                 $scope.tournaments = tournaments;
+            }, function(error){
+                $logger.error(error);
+                $scope.error = error;
             });
         };
+
+        // NG INIT
+        $logger.debug("Getting all registered tournaments");
+        $scope.all();
     };
 });

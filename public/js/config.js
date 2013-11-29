@@ -17,7 +17,7 @@ define(['angular', 'i18n', 'log', 'app'], function(angular, i18n, log, MarioKart
 				templateUrl: 'views/tournaments/create.html'
 			})
 			.when('/tournament/:id/edit', {
-				templateUrl: 'views/tournaments/update.html'
+				templateUrl: 'views/tournaments/edit.html'
 			})
 			.when('/tournament/:id', {
 				templateUrl: 'views/tournaments/detail.html'
