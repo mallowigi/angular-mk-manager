@@ -5,7 +5,6 @@
 # override. If you want to turn change the source directory you would need to uncomment watch
 # and sourceDir. Also be sure to respect coffeescript indentation rules.  2 spaces per level
 # please!
-
 exports.config = {
 
 	modules: ['jshint', 'server', 'require', 'live-reload', 'minify', 'bower', 'server-reload']
@@ -93,4 +92,4 @@ exports.config = {
 		watch: ["server.js", "server.coffee", "app", "config"]
 		validate: false
 
-}
+};

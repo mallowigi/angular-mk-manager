@@ -21,13 +21,9 @@ var express = require('express')
  * Main application entry file.
  * Please note that the order of loading is important.
  */
+var mimosaConfig = require('./mimosa-config').config;
 
-/**
- * Run using mimosa config
- * @param mimosaConfig
- * @param done
- */
-exports.startServer = function(mimosaConfig, done) {
+var startServer = function(mimosaConfig) {
 
     // Load configurations
     // if test env, load example file
@@ -81,5 +77,7 @@ exports.startServer = function(mimosaConfig, done) {
     module.exports = server;
 
     // Then watch the server with mimosa
-    done(server, io);
+//    done(server, io);
 };
+
+startServer(mimosaConfig);
