@@ -27,9 +27,9 @@ describe('Header Bar:', function() {
 			navBarScope = using('#navBar');
 		});
 
-		afterEach(function(){
-			browser().navigateTo('/signout');
-		})
+		afterEach(function() {
+            browser().navigateTo('/signout');
+        });
 
 		describe('Before authenticating user:', function() {
 			"use strict";

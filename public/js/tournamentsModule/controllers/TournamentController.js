@@ -6,7 +6,7 @@ define(['lodash'], function(_) {
     "use strict";
     return function($scope, $logger, $routeParams, $location, User, Tournament) {
 
-//        $logger.trace("Tournament: %o", $scope.tournament);
+        //        $logger.trace("Tournament: %o", $scope.tournament);
 
         /**
          * Get the tournament referenced in the routeparams
@@ -34,12 +34,13 @@ define(['lodash'], function(_) {
          * Update current tournament
          */
         $scope.update = function() {
+            var tournament;
             if (!$scope.tournament) {
                 $logger.warn("There is no tournament defined yet");
                 return;
             }
 
-            var tournament = $scope.tournament;
+            tournament = $scope.tournament;
             $logger.debug('Updating tournament %s', tournament._id);
 
             tournament.$update(function() {
@@ -51,12 +52,13 @@ define(['lodash'], function(_) {
          * Delete current tournament
          */
         $scope.remove = function() {
+            var tournament;
             if (!$scope.tournament) {
                 $logger.warn("There is no tournament defined yet");
                 return;
             }
 
-            var tournament = $scope.tournament;
+            tournament = $scope.tournament;
             $logger.debug('Deleting tournament %s', tournament._id);
 
             tournament.$remove();

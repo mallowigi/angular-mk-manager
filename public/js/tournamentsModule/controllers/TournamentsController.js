@@ -11,9 +11,11 @@ define([
          * Create a tournament
          */
         $scope.create = function() {
+            var tournament;
+
             $logger.debug("Creating tournament %s", $scope.tournament.name);
             // Create the tournament to be send to the server
-            var tournament = new Tournament({
+            tournament = new Tournament({
                 name: this.tournament.name,
                 tracks: 4
             });
