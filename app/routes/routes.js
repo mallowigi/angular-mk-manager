@@ -3,13 +3,13 @@ module.exports = function(app, passport, auth, ajaxAuth) {
     var index;
 
     // users routes
-    require('./users')(app, passport);
+    require('./usersRoutes')(app, passport);
 
     // authentication routes
-    require('./auth')(app, passport, auth);
+    require('./authRoutes')(app, passport, auth);
 
     // tournaments (AJAX)
-    require('./tournaments')(app, ajaxAuth);
+    require('./tournamentsRoutes')(app, ajaxAuth);
 
     // home route
     index = require('../controllers/index');

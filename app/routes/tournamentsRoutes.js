@@ -4,7 +4,7 @@
 
 module.exports = function(app, auth) {
 	"use strict";
-	var tournaments = require('../controllers/tournaments');
+	var tournaments = require('../controllers/TournamentAPI');
 
 	app.get('/tournaments', tournaments.getAllTournaments);
 	app.post('/tournaments', auth.requiresLogin, tournaments.createTournament);
