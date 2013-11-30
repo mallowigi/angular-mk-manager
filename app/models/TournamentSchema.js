@@ -10,7 +10,7 @@ var mongoose = require('mongoose')
 var TournamentSchema = new Schema({
 	name: String,
 	tracks: Number,
-	playerID: {type: Schema.ObjectId, ref: 'User' }
+	player: {type: Schema.ObjectId, ref: 'User' }
 });
 
 // Add autoIncrement plugin to Tournament
@@ -20,7 +20,7 @@ TournamentSchema.plugin(autoIncrement.plugin, 'Tournament');
 TournamentSchema.statics.load = function(id, done) {
 	"use strict";
 	// Find one tournament with this id left join with User table with player ID
-	this.findOne({_id: id}).populate('playerID').exec(done);
+	this.findOne({_id: id}).populate('player').exec(done);
 };
 
 // Associate the schema with the entity "Tournament"

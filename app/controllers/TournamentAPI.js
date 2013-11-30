@@ -14,7 +14,7 @@ exports.createTournament = function(req, res) {
     "use strict";
     // Tournaments are being passed by the client when submitting and user is part of the request itself
     var tournament = new TournamentModel(req.body);
-    tournament.playerID = req.user;
+    tournament.player = req.user;
     // persist into the db
     tournament.save(function(err, savedTournament) {
         if (err) {
@@ -54,7 +54,6 @@ exports.findTournament = function(req, res, next, id) {
         if (!tournament) {
             return next(new Error('Cannot find the requested tournament'));
         }
-
         // Attach the tournament to the request
         req.tournament = tournament;
         return next();
@@ -69,7 +68,7 @@ exports.findTournament = function(req, res, next, id) {
 exports.getAllTournaments = function(req, res) {
     "use strict";
     // Get all tournaments in the db
-    TournamentModel.find().populate('playerID').exec(function(err, tournaments) {
+    TournamentModel.find().populate('player').exec(function(err, tournaments) {
         // If error in the database
         if (err) {
             res.render('error', {status: 500});
