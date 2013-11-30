@@ -10,5 +10,5 @@ exports.requiresLogin = function(req, res, next) {
             redirect: '/signin'
         });
     }
-    next();
+    return next();
 };

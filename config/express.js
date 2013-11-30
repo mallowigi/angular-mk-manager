@@ -28,7 +28,7 @@ module.exports = function(app, config, passport, mimosa) {
      * - threshold: Only compress if the byte size is above the threshold
      * - chunkSize: size of chunks
      * - level: compression level
-     * - memLvel: memory level
+     * - memLevel: memory level
      * - strategy: compression strategy (RLE, Huffman... see zlib)
      */
     app.use(express.compress({
@@ -169,7 +169,7 @@ module.exports = function(app, config, passport, mimosa) {
         console.error(err.stack);
 
         // If HTTP Request
-        res.status(err.status).render('500', { error: err.stack });
+        return res.status(err.status).render('500', { error: err.stack });
     });
 
     // assume 404 since no middleware responded
