@@ -2,11 +2,6 @@
  * Module dependencies.
  */
 
-var mongoose = require('mongoose')
-  , async = require('async')
-  , _ = require('underscore')
-
-
 exports.render = function(req, res) {
 	'use strict';
 	res.render('index', {
