@@ -89,7 +89,7 @@ exports.config = {
 		configFile: 'karma.conf.js'
 
 	serverReload:
-		watch: ["server.js", "server.coffee", "app", "config"]
+		watch: ["server.js", "server-standalone.js", "startServer.js", "server.coffee", "app", "config"]
 		validate: false
 
 };
