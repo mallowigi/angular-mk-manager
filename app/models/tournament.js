@@ -1,16 +1,20 @@
 /**
  * Created by Elior on 09/11/13.
  */
-var mongoose = require('mongoose'),
-	Schema = mongoose.Schema,
-	env = process.env.NODE_ENV || 'development',
-	config = require('../../config/config')[env];
+var mongoose = require('mongoose')
+    , Schema = mongoose.Schema
+    , autoIncrement = require('mongoose-auto-increment')
+    , env = process.env.NODE_ENV || 'development'
+    , config = require('../../config/config')[env];
 
 var TournamentSchema = new Schema({
 	name: String,
 	tracks: Number,
 	playerID: {type: Schema.ObjectId, ref: 'User' }
 });
+
+// Add autoIncrement plugin to Tournament
+TournamentSchema.plugin(autoIncrement.plugin, 'Tournament');
 
 // Static methods
 TournamentSchema.statics.load = function(id, done) {
