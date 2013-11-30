@@ -2,11 +2,11 @@
  * Created by eliorb on 25/11/13.
  */
 /* global define */
-define([], function() {
+define(['lodash'], function(_) {
     "use strict";
     return function($scope, $logger, $routeParams, $location, User, Tournament) {
 
-        $logger.debug("Getting tournament %s", $routeParams.id);
+//        $logger.trace("Tournament: %o", $scope.tournament);
 
         /**
          * Get the tournament referenced in the routeparams
@@ -40,10 +40,10 @@ define([], function() {
             }
 
             var tournament = $scope.tournament;
-            $logger.debug('Updating tournament %s', tournament.tournamentId);
+            $logger.debug('Updating tournament %s', tournament._id);
 
             tournament.$update(function() {
-                $location.path('tournament/' + tournament.tournamentId);
+                $location.path('tournaments/');
             });
         };
 
@@ -57,11 +57,11 @@ define([], function() {
             }
 
             var tournament = $scope.tournament;
-            $logger.debug('Deleting tournament %s', tournament.tournamentId);
+            $logger.debug('Deleting tournament %s', tournament._id);
 
             tournament.$remove();
             // Remove from the tournament list
-            _.remove($scope.tournaments, {'tournamentId': tournament.tournamentId});
+            _.remove($scope.tournaments, {'_id': tournament._id});
         };
     };
 });

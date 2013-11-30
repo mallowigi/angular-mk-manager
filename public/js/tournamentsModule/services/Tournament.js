@@ -7,7 +7,7 @@ define([
 	 * Service for the tournament resource in the backend
 	 */
 	return function Tournament ($logger, $resource) {
-		$logger.debug('Creating a new Tournament');
+		$logger.debug('Loading resource Tournament');
 
 		// Use ngResource to send to "tournaments/:id"
 		return $resource('tournaments/:tournamentId',

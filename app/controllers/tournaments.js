@@ -2,7 +2,8 @@
  * Created by Elior on 09/11/13.
  */
 var mongoose = require('mongoose'),
-	TournamentModel = mongoose.model('Tournament');
+	TournamentModel = mongoose.model('Tournament'),
+    _ = require('lodash');
 
 /**
  * Create a tournament and return it in the response in JSON format
@@ -41,7 +42,7 @@ exports.showTournament = function(req, res) {
 exports.findTournament = function(req, res, next, id) {
 	"use strict";
 	// Call the static find method
-	TournamentModel.find(id, function(error, tournament) {
+	TournamentModel.load(id, function(error, tournament) {
 		// If error with the request
 		if (error) {
 			return next(error);

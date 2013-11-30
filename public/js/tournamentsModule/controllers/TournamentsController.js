@@ -3,7 +3,7 @@ define([
 ], function() {
     "use strict";
     return function TournamentsController ($scope, $logger, $routeParams, $location, User, Tournament) {
-        $logger.debug("Creating a new TournamentsController");
+        $logger.debug("Loading TournamentsController");
 
         $scope.user = User;
 
@@ -14,7 +14,7 @@ define([
             $logger.debug("Creating tournament %s", $scope.tournament.name);
             // Create the tournament to be send to the server
             var tournament = new Tournament({
-                name: this.tournament.name, //this will be from the form
+                name: this.tournament.name,
                 tracks: 4
             });
 
@@ -35,7 +35,7 @@ define([
             });
 
             // resets the value
-//            this.tournament.name = "";
+            //            this.tournament.name = "";
         };
 
         /**
@@ -46,7 +46,7 @@ define([
             // We use the ngResource api
             Tournament.query(query, function(tournaments) {
                 $scope.tournaments = tournaments;
-            }, function(error){
+            }, function(error) {
                 $logger.error(error);
                 $scope.error = error;
             });

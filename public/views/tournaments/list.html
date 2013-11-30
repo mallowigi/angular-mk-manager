@@ -1,9 +1,9 @@
-<div data-ng-controller="TournamentsController">
+<div data-ng-controller="TournamentsController" data-ng-cloak>
     <h2>Tournaments</h2>
     <ul class="unstyled">
         <li data-ng-repeat="tournament in tournaments" data-ng-controller="TournamentController">
-            <a data-ng-href="#!/tournaments/{{ tournament.tournamentId }}">{{ tournament.name }}</a>
-            <a data-ng-href="#!/tournaments/{{ tournament.tournamentId }}/edit">Edit</a>
+            <a data-ng-href="#!/tournaments/{{ tournament._id }}">{{ tournament.name }}</a>
+            <a data-ng-href="#!/tournaments/{{ tournament._id }}/edit">Edit</a>
             <a href="javascript:void(0)" data-ng-click="remove()">Delete</a>
         </li>
     </ul>
