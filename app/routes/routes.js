@@ -11,6 +11,9 @@ module.exports = function(app, passport, auth, ajaxAuth) {
     // tournaments (AJAX)
     require('./tournamentsRoutes')(app, ajaxAuth);
 
+    // Tracks
+    require('./trackRoutes')(app, ajaxAuth);
+
     // home route
     index = require('../controllers/index');
     app.get('/', index.render);

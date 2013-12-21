@@ -34,4 +34,9 @@ module.exports = function(app, passport){
 		failureRedirect: '/signin',
 		scope: 'https://www.google.com/m8/feeds'
 	}), users.authCallback);
+    app.get('/auth/basic', passport.authenticate('basic', {
+        session: false,
+        failureRedirect: '/signin',
+        failureFlash: 'Invalid username or password.'
+    }), users.session);
 };

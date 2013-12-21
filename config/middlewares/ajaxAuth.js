@@ -1,7 +1,6 @@
 /**
  * Created by eliorb on 27/11/13.
  */
-
 exports.requiresLogin = function(req, res, next) {
     'use strict';
     if (!req.isAuthenticated()) {

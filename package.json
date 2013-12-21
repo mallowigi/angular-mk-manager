@@ -35,7 +35,8 @@
     "i18next": "latest",
     "socket.io": "latest",
     "lodash": "latest",
-    "mongoose-auto-increment": "~2.1.1"
+    "mongoose-auto-increment": "~2.1.1",
+    "passport-http": "~0.2.2"
   },
   "devDependencies": {
     "grunt": "latest",
